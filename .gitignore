@@ -1,0 +1,16 @@
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/temp.py
+backend/temp.js
+backend/candidates.db
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+
+# System
+.DS_Store
+*.env
+
