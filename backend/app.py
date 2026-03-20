@@ -407,7 +407,7 @@ def calculate_final_score():
     })
 
 # ─── AI HR Interview (Groq) ───────────────────────────────────────────────────
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 HR_SYSTEM_PROMPT = """You are a professional HR interviewer conducting a technical job interview.
 Your job is to assess the candidate fairly and professionally.
