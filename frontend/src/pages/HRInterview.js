@@ -17,7 +17,7 @@ export default function HRInterview() {
     const candidateEmail = localStorage.getItem('candidateEmail') || '';
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/start_hr_interview', {
+        fetch('https://ai-interview-backend-a7x2.onrender.com/start_hr_interview', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: candidateName })
@@ -59,7 +59,7 @@ export default function HRInterview() {
         setHistory(newHistory);
 
         try {
-            const res = await fetch('http://127.0.0.1:5000/hr_chat', {
+            const res = await fetch('https://ai-interview-backend-a7x2.onrender.com/hr_chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -136,8 +136,8 @@ export default function HRInterview() {
                             </div>
                         )}
                         <div className={`max-w-xl px-4 py-3 rounded-2xl text-sm leading-relaxed ${msg.role === 'hr'
-                                ? 'bg-gray-800 text-gray-100 rounded-tl-sm'
-                                : 'bg-purple-700 text-white rounded-tr-sm'
+                            ? 'bg-gray-800 text-gray-100 rounded-tl-sm'
+                            : 'bg-purple-700 text-white rounded-tr-sm'
                             }`}>
                             {msg.text}
                         </div>

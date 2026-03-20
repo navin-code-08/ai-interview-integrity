@@ -10,7 +10,7 @@ export default function FinalScore() {
     const candidateName = localStorage.getItem('candidateName') || 'Candidate';
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/calculate_final_score', {
+        fetch('https://ai-interview-backend-a7x2.onrender.com/calculate_final_score', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: candidateEmail })
@@ -99,12 +99,12 @@ export default function FinalScore() {
 
                 {/* Risk info */}
                 <div className={`rounded-xl px-5 py-4 mb-6 border flex items-center justify-between ${scores.risk_score >= 40 ? 'border-red-700 bg-red-900/20' :
-                        scores.risk_score >= 20 ? 'border-yellow-700 bg-yellow-900/20' :
-                            'border-green-700 bg-green-900/20'
+                    scores.risk_score >= 20 ? 'border-yellow-700 bg-yellow-900/20' :
+                        'border-green-700 bg-green-900/20'
                     }`}>
                     <span className="text-sm text-gray-300">Integrity Risk Score</span>
                     <span className={`font-bold ${scores.risk_score >= 40 ? 'text-red-400' :
-                            scores.risk_score >= 20 ? 'text-yellow-400' : 'text-green-400'
+                        scores.risk_score >= 20 ? 'text-yellow-400' : 'text-green-400'
                         }`}>
                         {scores.risk_score} — {scores.risk_score >= 40 ? 'Suspicious' : scores.risk_score >= 20 ? 'Warning' : 'Safe'}
                     </span>

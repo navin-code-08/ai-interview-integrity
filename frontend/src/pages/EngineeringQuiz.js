@@ -15,7 +15,7 @@ const EngineeringQuiz = () => {
 
     // ── Load questions from backend ──────────────────────────────
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/get_quiz')
+        fetch('https://ai-interview-backend-a7x2.onrender.com/get_quiz')
             .then(res => res.json())
             .then(data => {
                 setQuestions(data.questions);
@@ -29,7 +29,7 @@ const EngineeringQuiz = () => {
     // ── Submit quiz ──────────────────────────────────────────────
     const submitQuiz = useCallback(() => {
         setQuizState('submitting');
-        fetch('http://127.0.0.1:5000/submit_quiz', {
+        fetch('https://ai-interview-backend-a7x2.onrender.com/submit_quiz', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: candidateEmail, answers })

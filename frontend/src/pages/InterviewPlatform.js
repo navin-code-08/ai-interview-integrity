@@ -69,7 +69,7 @@ export default function InterviewPlatform() {
     const status = riskScore >= 40 ? "Suspicious" : "Safe";
 
     if (candidateEmail) {
-      fetch('http://127.0.0.1:5000/save_result', {
+      fetch('https://ai-interview-backend-a7x2.onrender.com/save_result', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

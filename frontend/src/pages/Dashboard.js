@@ -5,7 +5,7 @@ function Dashboard() {
   const [candidates, setCandidates] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/candidates")
+    fetch("https://ai-interview-backend-a7x2.onrender.com/candidates")
       .then(res => res.json())
       .then(data => setCandidates(data));
   }, []);

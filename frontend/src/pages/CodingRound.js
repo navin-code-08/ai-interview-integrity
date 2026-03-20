@@ -16,7 +16,7 @@ function CodingRound() {
 
   // Fetch random questions from backend
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/get_coding_questions")
+    fetch("https://ai-interview-backend-a7x2.onrender.com/get_coding_questions")
       .then(res => res.json())
       .then(data => {
         setQuestions(data);
@@ -47,7 +47,7 @@ function CodingRound() {
   const runCode = async () => {
     setOutput("Running...");
     try {
-      const response = await fetch("http://127.0.0.1:5000/run_code", {
+      const response = await fetch("https://ai-interview-backend-a7x2.onrender.com/run_code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language })
@@ -63,7 +63,7 @@ function CodingRound() {
     const finalAnswers = { ...answers, [question.id]: code };
     setSubmitting(true);
     try {
-      const response = await fetch("http://127.0.0.1:5000/submit_coding", {
+      const response = await fetch("https://ai-interview-backend-a7x2.onrender.com/submit_coding", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

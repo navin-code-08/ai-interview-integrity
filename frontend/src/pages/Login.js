@@ -21,7 +21,7 @@ export default function Login() {
     localStorage.setItem('candidateEmail', email.trim());
 
     // Save to backend database
-    fetch('http://127.0.0.1:5000/login', {
+    fetch('https://ai-interview-backend-a7x2.onrender.com/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: name.trim(), email: email.trim() })

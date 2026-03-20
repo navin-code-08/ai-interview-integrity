@@ -12,7 +12,7 @@ export default function AdminDashboard() {
     const [passwordInput, setPasswordInput] = useState('');
     const [wrongPassword, setWrongPassword] = useState(false);
 
-    const ADMIN_PASSWORD = "admin@2026"; // change this to your own password
+    const ADMIN_PASSWORD = "interview@2006"; // change this to your own password
 
     const handleAdminLogin = () => {
         if (passwordInput === ADMIN_PASSWORD) {
@@ -24,7 +24,7 @@ export default function AdminDashboard() {
     };
     const fetchCandidates = () => {
         setLoading(true);
-        fetch('http://127.0.0.1:5000/candidates', {
+        fetch('https://ai-interview-backend-a7x2.onrender.com/candidates', {
             headers: {
                 'X-Admin-Token': 'admin-secret-2026'  // must match backend
             }
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
                 <button
                     onClick={() => {
                         if (window.confirm('Delete ALL candidate data? This cannot be undone.')) {
-                            fetch('http://127.0.0.1:5000/clear_candidates', {
+                            fetch('https://ai-interview-backend-a7x2.onrender.com/clear_candidates', {
                                 method: 'DELETE',
                                 headers: { 'X-Admin-Token': 'admin-secret-2026' }
                             })
