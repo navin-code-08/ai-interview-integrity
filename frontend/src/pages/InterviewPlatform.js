@@ -36,7 +36,10 @@ export default function InterviewPlatform() {
     startVideo();
   };
 
-  useEffect(() => { loadModels(); }, []);
+  useEffect(() => {
+    loadModels();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ── Face detection ─────────────────────────────────────────────────────────
   const detectFaces = async () => {
