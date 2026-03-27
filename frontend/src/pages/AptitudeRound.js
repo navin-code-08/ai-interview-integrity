@@ -62,7 +62,6 @@ export default function AptitudeRound() {
         });
         const percentage = Math.round((score / questions.length) * 100);
 
-        // Save to backend
         fetch(`${process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000'}/submit_aptitude`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -96,24 +95,24 @@ export default function AptitudeRound() {
     const currentQ = questions[currentIndex];
     const answeredCount = Object.keys(answers).length;
 
-    // Results screen
+    // ── Results screen ──────────────────────────────────────────────────────
     if (status === 'submitted' && results) {
         const passed = results.percentage >= 60;
         return (
-            <div style={{ backgroundColor: '#052e16' }} className="min-h-screen text-white p-6">
+            <div style={{ backgroundColor: '#0f0f1a' }} className="min-h-screen text-white p-6">
                 <div className="max-w-3xl mx-auto">
                     <div style={{
-                        border: `1px solid ${passed ? '#10b981' : '#ef4444'}`,
-                        backgroundColor: passed ? '#064e2a' : '#3b0000'
+                        border: `1px solid ${passed ? '#7c3aed' : '#ef4444'}`,
+                        backgroundColor: passed ? '#1a1a2e' : '#2d0a0a'
                     }}
                         className="rounded-2xl p-8 text-center mb-8">
                         <div className="text-6xl mb-4">{passed ? '🎉' : '📚'}</div>
                         <h1 className="text-3xl font-bold mb-2">Aptitude Round Complete!</h1>
-                        <p style={{ color: '#10b981' }} className="text-5xl font-bold my-4">
+                        <p style={{ color: '#a78bfa' }} className="text-5xl font-bold my-4">
                             {results.percentage}%
                         </p>
                         <p className="text-xl">{results.score} / {results.total} correct</p>
-                        <p className={`text-lg mt-2 font-semibold ${passed ? 'text-green-400' : 'text-red-400'}`}>
+                        <p className={`text-lg mt-2 font-semibold ${passed ? 'text-purple-400' : 'text-red-400'}`}>
                             {passed ? 'Passed ✓' : 'Needs improvement'}
                         </p>
                         {tabWarnings > 0 && (
@@ -128,13 +127,13 @@ export default function AptitudeRound() {
                         {results.results.map((r, i) => (
                             <div key={r.id}
                                 style={{
-                                    border: `1px solid ${r.is_correct ? '#10b981' : '#ef4444'}`,
-                                    backgroundColor: r.is_correct ? '#064e2a' : '#3b0000'
+                                    border: `1px solid ${r.is_correct ? '#7c3aed' : '#ef4444'}`,
+                                    backgroundColor: r.is_correct ? '#1a1a2e' : '#2d0a0a'
                                 }}
                                 className="p-4 rounded-xl">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <span style={{ backgroundColor: '#0a5c36' }}
-                                        className="text-xs px-2 py-0.5 rounded text-green-300">
+                                    <span style={{ backgroundColor: '#2d1b69' }}
+                                        className="text-xs px-2 py-0.5 rounded text-purple-300">
                                         {r.category}
                                     </span>
                                     <span className="text-gray-400 text-xs">Q{i + 1}</span>
@@ -142,12 +141,12 @@ export default function AptitudeRound() {
                                 <p className="font-medium mb-2">{r.question}</p>
                                 <p className="text-sm text-gray-400">
                                     Your answer:{' '}
-                                    <span className={r.is_correct ? 'text-green-400' : 'text-red-400'}>
+                                    <span className={r.is_correct ? 'text-purple-400' : 'text-red-400'}>
                                         {r.selected || 'Not answered'}
                                     </span>
                                 </p>
                                 {!r.is_correct && (
-                                    <p className="text-sm text-green-400">Correct: {r.correct}</p>
+                                    <p className="text-sm text-purple-400">Correct: {r.correct}</p>
                                 )}
                             </div>
                         ))}
@@ -155,12 +154,12 @@ export default function AptitudeRound() {
 
                     <div className="flex gap-4 mt-8">
                         <button onClick={() => navigate('/interview')}
-                            style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+                            style={{ backgroundColor: '#1a1a2e', border: '1px solid #2d1b69' }}
                             className="flex-1 py-3 rounded-xl font-semibold transition hover:opacity-90">
                             Back to Interview
                         </button>
                         <button onClick={() => navigate('/quiz')}
-                            style={{ backgroundColor: '#10b981' }}
+                            style={{ backgroundColor: '#7c3aed' }}
                             className="flex-1 py-3 rounded-xl font-semibold transition hover:opacity-90">
                             Continue to Engineering Quiz →
                         </button>
@@ -170,22 +169,24 @@ export default function AptitudeRound() {
         );
     }
 
+    // ── Loading screen ──────────────────────────────────────────────────────
     if (!currentQ) return (
-        <div style={{ backgroundColor: '#052e16' }}
+        <div style={{ backgroundColor: '#0f0f1a' }}
             className="min-h-screen flex items-center justify-center text-white">
             <div className="text-center">
-                <div style={{ borderColor: '#10b981' }}
+                <div style={{ borderColor: '#7c3aed' }}
                     className="w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
                 <p>Loading aptitude questions...</p>
             </div>
         </div>
     );
 
+    // ── Main quiz screen ────────────────────────────────────────────────────
     return (
-        <div style={{ backgroundColor: '#052e16' }} className="min-h-screen text-white">
+        <div style={{ backgroundColor: '#0f0f1a' }} className="min-h-screen text-white">
 
             {/* Header */}
-            <div style={{ backgroundColor: '#064e2a', borderBottom: '1px solid #0f6b38' }}
+            <div style={{ backgroundColor: '#13131f', borderBottom: '1px solid #2d1b69' }}
                 className="px-6 py-4 flex items-center justify-between">
                 <div>
                     <h1 className="text-lg font-bold">Aptitude Round</h1>
@@ -195,24 +196,24 @@ export default function AptitudeRound() {
                     {tabWarnings > 0 && (
                         <span className="text-yellow-400 text-sm">⚠ {tabWarnings} tab switch(es)</span>
                     )}
-                    <div style={{ color: timeLeft < 60 ? '#ef4444' : '#10b981' }}
+                    <div style={{ color: timeLeft < 60 ? '#ef4444' : '#a78bfa' }}
                         className={`text-2xl font-mono font-bold ${timeLeft < 60 ? 'animate-pulse' : ''}`}>
                         {formatTime(timeLeft)}
                     </div>
                 </div>
             </div>
 
-            {/* Progress */}
-            <div style={{ backgroundColor: '#064e2a', borderBottom: '1px solid #0f6b38' }}
+            {/* Progress bar */}
+            <div style={{ backgroundColor: '#13131f', borderBottom: '1px solid #2d1b69' }}
                 className="px-6 py-2">
                 <div className="flex justify-between text-xs text-gray-500 mb-1">
                     <span>{answeredCount} of {questions.length} answered</span>
                     <span>Question {currentIndex + 1} of {questions.length}</span>
                 </div>
-                <div style={{ backgroundColor: '#0a5c36' }} className="h-2 rounded-full">
+                <div style={{ backgroundColor: '#1a1a2e' }} className="h-2 rounded-full">
                     <div style={{
                         width: `${(answeredCount / questions.length) * 100}%`,
-                        backgroundColor: '#10b981'
+                        backgroundColor: '#7c3aed'
                     }}
                         className="h-2 rounded-full transition-all duration-300" />
                 </div>
@@ -222,11 +223,11 @@ export default function AptitudeRound() {
 
                 {/* Question area */}
                 <div className="flex-1">
-                    <div style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+                    <div style={{ backgroundColor: '#13131f', border: '1px solid #2d1b69' }}
                         className="rounded-2xl p-6">
                         <div className="flex items-center gap-2 mb-4">
-                            <span style={{ backgroundColor: '#0a5c36', border: '1px solid #10b981' }}
-                                className="px-3 py-1 text-green-300 text-xs rounded-full">
+                            <span style={{ backgroundColor: '#2d1b69', border: '1px solid #7c3aed' }}
+                                className="px-3 py-1 text-purple-300 text-xs rounded-full">
                                 {currentQ.category}
                             </span>
                             <span className="text-gray-500 text-sm">Question {currentIndex + 1}</span>
@@ -243,12 +244,12 @@ export default function AptitudeRound() {
                                     <button key={i}
                                         onClick={() => setAnswers(prev => ({ ...prev, [currentQ.id]: opt }))}
                                         style={{
-                                            border: `1px solid ${selected ? '#10b981' : '#0f6b38'}`,
-                                            backgroundColor: selected ? '#0a5c36' : '#052e16'
+                                            border: `1px solid ${selected ? '#7c3aed' : '#2d1b69'}`,
+                                            backgroundColor: selected ? '#2d1b69' : '#0f0f1a'
                                         }}
                                         className="w-full text-left px-5 py-4 rounded-xl transition-all">
                                         <span style={{
-                                            backgroundColor: selected ? '#10b981' : '#064e2a',
+                                            backgroundColor: selected ? '#7c3aed' : '#1a1a2e',
                                             color: selected ? 'white' : '#9ca3af'
                                         }}
                                             className="inline-flex w-7 h-7 rounded-full items-center justify-center text-sm font-bold mr-3">
@@ -265,21 +266,21 @@ export default function AptitudeRound() {
                             <button
                                 onClick={() => setCurrentIndex(i => Math.max(0, i - 1))}
                                 disabled={currentIndex === 0}
-                                style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+                                style={{ backgroundColor: '#1a1a2e', border: '1px solid #2d1b69' }}
                                 className="px-6 py-2 rounded-xl disabled:opacity-30 transition">
                                 ← Previous
                             </button>
                             {currentIndex < questions.length - 1 ? (
                                 <button
                                     onClick={() => setCurrentIndex(i => i + 1)}
-                                    style={{ backgroundColor: '#0a5c36' }}
+                                    style={{ backgroundColor: '#2d1b69' }}
                                     className="px-6 py-2 rounded-xl transition hover:opacity-90">
                                     Next →
                                 </button>
                             ) : (
                                 <button
                                     onClick={submitAptitude}
-                                    style={{ backgroundColor: '#10b981' }}
+                                    style={{ backgroundColor: '#7c3aed' }}
                                     className="px-6 py-2 rounded-xl font-semibold transition hover:opacity-90">
                                     Submit ✓
                                 </button>
@@ -288,9 +289,9 @@ export default function AptitudeRound() {
                     </div>
                 </div>
 
-                {/* Navigator */}
+                {/* Question navigator */}
                 <div className="w-48">
-                    <div style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+                    <div style={{ backgroundColor: '#13131f', border: '1px solid #2d1b69' }}
                         className="rounded-2xl p-4">
                         <p className="text-xs text-gray-500 mb-3 font-semibold uppercase tracking-wider">
                             Questions
@@ -300,10 +301,10 @@ export default function AptitudeRound() {
                                 <button key={q.id}
                                     onClick={() => setCurrentIndex(i)}
                                     style={{
-                                        backgroundColor: i === currentIndex ? '#10b981'
-                                            : answers[q.id] ? '#0a5c36' : '#052e16',
-                                        border: `1px solid ${i === currentIndex ? '#10b981'
-                                            : answers[q.id] ? '#0f6b38' : '#0f6b38'}`
+                                        backgroundColor: i === currentIndex ? '#7c3aed'
+                                            : answers[q.id] ? '#2d1b69' : '#0f0f1a',
+                                        border: `1px solid ${i === currentIndex ? '#7c3aed'
+                                            : answers[q.id] ? '#4c1d95' : '#2d1b69'}`
                                     }}
                                     className="w-9 h-9 rounded-lg text-xs font-bold transition">
                                     {i + 1}
@@ -312,15 +313,15 @@ export default function AptitudeRound() {
                         </div>
                         <div className="mt-4 space-y-1 text-xs text-gray-500">
                             <div className="flex items-center gap-2">
-                                <div style={{ backgroundColor: '#0a5c36' }} className="w-3 h-3 rounded" />
+                                <div style={{ backgroundColor: '#2d1b69' }} className="w-3 h-3 rounded" />
                                 Answered
                             </div>
                             <div className="flex items-center gap-2">
-                                <div style={{ backgroundColor: '#10b981' }} className="w-3 h-3 rounded" />
+                                <div style={{ backgroundColor: '#7c3aed' }} className="w-3 h-3 rounded" />
                                 Current
                             </div>
                             <div className="flex items-center gap-2">
-                                <div style={{ backgroundColor: '#052e16', border: '1px solid #0f6b38' }}
+                                <div style={{ backgroundColor: '#0f0f1a', border: '1px solid #2d1b69' }}
                                     className="w-3 h-3 rounded" />
                                 Not answered
                             </div>

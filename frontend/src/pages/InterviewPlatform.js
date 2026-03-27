@@ -88,7 +88,7 @@ export default function InterviewPlatform() {
   };
 
   const riskColor = riskScore >= 40 ? 'bg-red-600' :
-    riskScore >= 20 ? 'bg-yellow-600' : 'bg-green-700';
+    riskScore >= 20 ? 'bg-yellow-600' : 'bg-purple-700';
 
   return (
     <div className="bg-gray-950 text-white min-h-screen p-6">

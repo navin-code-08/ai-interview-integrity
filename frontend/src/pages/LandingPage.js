@@ -8,13 +8,13 @@ export default function LandingPage() {
   };
 
   return (
-    <div style={{ backgroundColor: '#052e16' }} className="text-white min-h-screen">
+    <div style={{ backgroundColor: '#0f0f1a' }} className="text-white min-h-screen">
 
       {/* Navbar */}
-      <nav style={{ backgroundColor: '#052e16', borderBottom: '1px solid #0f6b38' }}
+      <nav style={{ backgroundColor: '#0f0f1a', borderBottom: '1px solid #2d1b69' }}
         className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div style={{ backgroundColor: '#10b981' }}
+          <div style={{ backgroundColor: '#7c3aed' }}
             className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-white text-sm">
             AI
           </div>
@@ -30,7 +30,7 @@ export default function LandingPage() {
             How It Works
           </button>
           <button onClick={() => navigate('/login')}
-            style={{ backgroundColor: '#10b981' }}
+            style={{ backgroundColor: '#7c3aed' }}
             className="hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
             Start Interview
           </button>
@@ -38,35 +38,34 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section style={{ backgroundColor: '#052e16' }}
+      <section style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #1e1b4b 100%)' }}
         className="text-center pt-40 pb-32 px-6">
-        <div style={{ backgroundColor: '#0a5c36', border: '1px solid #10b981' }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-green-300 mb-6">
-          <span style={{ backgroundColor: '#10b981' }}
+        <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm text-white mb-6">
+          <span style={{ backgroundColor: '#a78bfa' }}
             className="w-2 h-2 rounded-full animate-pulse inline-block" />
           AI Powered Interview Platform — Free for Students
         </div>
         <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
           Practice Interviews<br />
-          <span style={{ color: '#10b981' }}>Before The Real One</span>
+          <span style={{ color: '#c4b5fd' }}>Before The Real One</span>
         </h1>
-        <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+        <p className="text-xl text-purple-100 max-w-2xl mx-auto mb-10">
           A complete AI monitored interview platform for final year students.
           Code, quiz, and HR interview — all in one place, completely free.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <button onClick={() => navigate('/login')}
-            style={{ backgroundColor: '#10b981' }}
-            className="hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
+            className="bg-black hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
             Start Assessment →
           </button>
           <button onClick={() => scrollTo('features')}
-            style={{ border: '1px solid #10b981', color: '#10b981' }}
-            className="hover:bg-green-900/20 px-8 py-4 rounded-xl text-lg font-semibold transition">
+            style={{ border: '1px solid white', color: 'white' }}
+            className="hover:bg-white/10 px-8 py-4 rounded-xl text-lg font-semibold transition">
             Learn More
           </button>
           <button onClick={() => navigate('/admin')}
-            style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+            style={{ backgroundColor: '#1e1b4b', border: '1px solid #4f46e5' }}
             className="hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition">
             Admin Dashboard
           </button>
@@ -81,15 +80,15 @@ export default function LandingPage() {
             { num: 'Free', label: 'Zero Cost' },
           ].map((s, i) => (
             <div key={i} className="text-center">
-              <p style={{ color: '#10b981' }} className="text-4xl font-bold">{s.num}</p>
-              <p className="text-gray-400 text-sm mt-1">{s.label}</p>
+              <p style={{ color: '#c4b5fd' }} className="text-4xl font-bold">{s.num}</p>
+              <p className="text-purple-200 text-sm mt-1">{s.label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" style={{ backgroundColor: '#064e2a' }} className="py-24 px-6">
+      <section id="features" style={{ backgroundColor: '#0f0f1a' }} className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-4">Platform Features</h2>
           <p className="text-center text-gray-400 mb-16">
@@ -105,8 +104,8 @@ export default function LandingPage() {
               { icon: '📊', title: 'Admin Dashboard', desc: 'Faculty and recruiters can view all student scores, risk flags, and HR transcripts in one place.' },
             ].map((f, i) => (
               <div key={i}
-                style={{ backgroundColor: '#052e16', border: '1px solid #0f6b38' }}
-                className="p-6 rounded-xl hover:border-green-400 transition">
+                style={{ backgroundColor: '#1a1a2e', border: '1px solid #2d1b69' }}
+                className="p-6 rounded-xl hover:border-purple-400 transition">
                 <div className="text-3xl mb-4">{f.icon}</div>
                 <h3 className="text-lg font-semibold text-white mb-2">{f.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
@@ -117,7 +116,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" style={{ backgroundColor: '#052e16' }} className="py-24 px-6">
+      <section id="how-it-works" style={{ backgroundColor: '#13131f' }} className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-4">How It Works</h2>
           <p className="text-center text-gray-400 mb-16">
@@ -132,7 +131,7 @@ export default function LandingPage() {
               { step: '05', color: '#ec4899', title: 'AI HR Interview', desc: '10 exchange AI conversation' },
             ].map((s, i) => (
               <div key={i}
-                style={{ backgroundColor: '#064e2a', border: '1px solid #0f6b38' }}
+                style={{ backgroundColor: '#1a1a2e', border: '1px solid #2d1b69' }}
                 className="p-5 rounded-xl text-center">
                 <p style={{ color: s.color }} className="text-4xl font-bold mb-3">{s.step}</p>
                 <h3 className="text-sm font-semibold text-white mb-2">{s.title}</h3>
@@ -144,17 +143,17 @@ export default function LandingPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ backgroundColor: '#0a5c36' }} className="py-20 px-6 text-center">
+      <section style={{ background: 'linear-gradient(135deg, #7c3aed, #4f46e5)' }} className="py-20 px-6 text-center">
         <h2 className="text-4xl font-bold text-white mb-4">
           Ready to Practice?
         </h2>
-        <p className="text-green-200 mb-8 max-w-xl mx-auto">
+        <p className="text-purple-200 mb-8 max-w-xl mx-auto">
           Start your practice interview now. Completely free.
           Built by students for students.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
           <button onClick={() => navigate('/login')}
-            className="bg-white text-green-800 font-bold px-10 py-4 rounded-xl text-lg hover:opacity-90 transition">
+            className="bg-white text-purple-800 font-bold px-10 py-4 rounded-xl text-lg hover:opacity-90 transition">
             Start Interview →
           </button>
           <button onClick={() => navigate('/admin')}
@@ -166,7 +165,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#052e16', borderTop: '1px solid #0f6b38' }}
+      <footer style={{ backgroundColor: '#0f0f1a', borderTop: '1px solid #2d1b69' }}
         className="py-8 text-center">
         <p className="text-lg font-bold text-white">AI Interview Integrity System</p>
         <p className="text-gray-400 text-sm mt-1">
