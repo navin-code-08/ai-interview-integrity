@@ -170,6 +170,39 @@ def login():
     conn.close()
     return jsonify({"message": "Candidate ready"})
 
+@app.route('/submit_aptitude', methods=['POST'])
+def submit_aptitude():
+    import json
+    data            = request.get_json()
+    candidate_email = data.get('email', '')
+    score           = data.get('score', 0)
+    percentage      = data.get('percentage', 0)
+    results         = data.get('results', [])
+
+    try:
+        conn = sqlite3.connect("candidates.db")
+        c    = conn.cursor()
+        try:
+            c.execute("ALTER TABLE candidates ADD COLUMN aptitude_score INTEGER DEFAULT 0")
+        except: pass
+        try:
+            c.execute("ALTER TABLE candidates ADD COLUMN aptitude_percentage INTEGER DEFAULT 0")
+        except: pass
+        try:
+            c.execute("ALTER TABLE candidates ADD COLUMN aptitude_results TEXT")
+        except: pass
+        c.execute("""
+            UPDATE candidates
+            SET aptitude_score=?, aptitude_percentage=?, aptitude_results=?
+            WHERE email=?
+        """, (score, percentage, json.dumps(results), candidate_email))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"Aptitude save error: {e}")
+
+    return jsonify({"score": score, "percentage": percentage, "message": "Saved"})
+
 # ─── Quiz routes ──────────────────────────────────────────────────────────────
 @app.route('/get_quiz', methods=['GET'])
 def get_quiz():

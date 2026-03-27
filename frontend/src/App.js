@@ -8,7 +8,7 @@ import EngineeringQuiz from './pages/EngineeringQuiz';
 import HRInterview from './pages/HRInterview';
 import AdminDashboard from './pages/AdminDashboard';
 import FinalScore from './pages/FinalScore';
-
+import AptitudeRound from './pages/AptitudeRound';
 function App() {
 
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route path="/hr-interview" element={<HRInterview />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/final-score" element={<FinalScore />} />
+        <Route path="/aptitude" element={<AptitudeRound />} />
       </Routes>
 
     </Router>

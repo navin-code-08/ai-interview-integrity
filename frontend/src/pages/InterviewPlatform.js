@@ -138,7 +138,13 @@ export default function InterviewPlatform() {
 
           {/* 3 round buttons — NO duplicates */}
           <div className="flex gap-3 mb-6 flex-wrap">
-
+            <button
+              onClick={() => navigate('/aptitude')}
+              style={{ backgroundColor: '#10b981' }}
+              className="flex items-center gap-2 px-5 py-3 hover:opacity-90 text-white rounded-xl font-semibold transition"
+            >
+              <span>🧮</span> Aptitude Round
+            </button>
             <button
               onClick={() => navigate("/coding")}
               className="flex items-center gap-2 px-5 py-3 bg-purple-700 hover:bg-purple-600 text-white rounded-xl font-semibold transition"
